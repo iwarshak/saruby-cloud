@@ -1,4 +1,4 @@
-This is the application that I demoed at the 4/27/2009 SARuby meeting. It is a picture uploading/converting application that is completely run in the Amazon cloud: EC2/S3/CloudFront/SQS/SimpleDB. 
+This is the application that I demoed at the 4/28/2009 SARuby meeting. It is a picture uploading/converting application that is completely run in the Amazon cloud: EC2/S3/CloudFront/SQS/SimpleDB. 
 
 The application has a web component, which is where you upload your pictures, and a async processing component that converts these images to different sizes, applies effects, etc. 
 
