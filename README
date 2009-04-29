@@ -1,0 +1,22 @@
+There are a few things you need to do to get this app running
+
+1 - Setup your AWS keys in either your environment (development mode), or 2) put them in the proper txt files (production mode - see production.rb)
+
+2 - Install the proper gems. rake install:gems should do the trick.
+
+3 - Using the right_aws tools, you need to setup several things. 
+  - Setup the s3 bucket. See Picture::UPLOAD_BUCKET
+  - Setup your sqs queue named "convert". See picture.rb
+  - Ensure that you are signed up for SDB, and create the pictures domain. You can do that with: 
+      RightAws::ActiveSdb.establish_connection; Picture.create_domain
+      
+  -Setup your cloud front distribution
+    acf = RightAws::AcfInterface.new
+    dist = acf.create_distribution 'UPLOAD_BUCKET.s3.amazonaws.com', 'desc'
+    
+4 - Substitute YOUR_CLOUDFRONT_DISTRIBUTION_NAME in picture.rb with your new distribution name 
+  
+5 - If running in production, edit application_controller.rb and replace pictr.yourdomain.com with the proper name
+  
+6 - Install a Georgia.ttf font in files/ See convert_job.rb (this was used for the text overlay in the pictures)
+  
